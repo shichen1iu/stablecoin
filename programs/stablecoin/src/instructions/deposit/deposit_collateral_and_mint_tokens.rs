@@ -5,7 +5,7 @@ use crate::utils::*;
 use anchor_lang::prelude::*;
 use anchor_spl::{
     associated_token::AssociatedToken,
-    token_interface::{Mint, TokenAccount, TokenInterface},
+    token_interface::{Mint, Token2022, TokenAccount},
 };
 use pyth_solana_receiver_sdk::price_update::PriceUpdateV2;
 
@@ -44,7 +44,7 @@ pub struct DepositCollateralAndMintTokens<'info> {
     #[account(mut)]
     pub depositor: Signer<'info>,
     pub system_program: Program<'info, System>,
-    pub token_program: Interface<'info, TokenInterface>,
+    pub token_program: Program<'info, Token2022>,
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub price_feed: Account<'info, PriceUpdateV2>,
 }

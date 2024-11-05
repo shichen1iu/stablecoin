@@ -1,7 +1,7 @@
 use crate::constant::*;
 use crate::state::*;
 use anchor_lang::prelude::*;
-use anchor_spl::token_interface::{Mint, TokenInterface};
+use anchor_spl::token_interface::{Mint, Token2022};
 #[derive(Accounts)]
 pub struct InitializeConfig<'info> {
     #[account(
@@ -26,7 +26,7 @@ pub struct InitializeConfig<'info> {
     #[account(mut)]
     pub authority: Signer<'info>,
     pub system_program: Program<'info, System>,
-    pub token_program: Interface<'info, TokenInterface>,
+    pub token_program: Program<'info, Token2022>,
 }
 
 pub fn process_initialize_config(ctx: Context<InitializeConfig>) -> Result<()> {

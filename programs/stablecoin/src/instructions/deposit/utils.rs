@@ -2,13 +2,13 @@ use anchor_lang::{
     prelude::*,
     system_program::{transfer, Transfer},
 };
-use anchor_spl::token_interface::{mint_to, Mint, MintTo, TokenAccount, TokenInterface};
+use anchor_spl::token_interface::{mint_to, Mint, MintTo, Token2022, TokenAccount};
 
 use crate::constant::SEED_MINT_ACCOUNT;
 
 pub fn mint_tokens<'info>(
     mint: &InterfaceAccount<'info, Mint>,
-    token_program: &Interface<'info, TokenInterface>,
+    token_program: &Program<'info, Token2022>,
     token_account: &InterfaceAccount<'info, TokenAccount>,
     bump: u8,
     amount: u64,
